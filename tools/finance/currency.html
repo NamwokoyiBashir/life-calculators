@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汇率换算 - 生活计算宝典</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../layout.css">
+    <link rel="stylesheet" href="../../components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+</head>
+<body class="app">
+    <header class="app-header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="navbar-mobile">
+                    <a href="../../pages/finance.html" class="navbar-back">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <div class="navbar-title">汇率换算</div>
+                    <div></div>
+                </div>
+                
+                <div class="navbar-desktop">
+                    <a href="../../index.html" class="logo">
+                        <i class="fas fa-calculator"></i>
+                        <span class="logo-text">生活计算宝典</span>
+                    </a>
+                    <div class="nav-links">
+                        <a href="../../index.html" class="nav-link">首页</a>
+                        <a href="../../pages/finance.html" class="nav-link active">理财金融</a>
+                        <a href="../../pages/shopping.html" class="nav-link">消费购物</a>
+                        <a href="../../pages/tools.html" class="nav-link">所有工具</a>
+                    </div>
+                    <div class="theme-toggle">
+                        <button class="theme-btn" aria-label="切换主题">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <section class="section">
+            <div class="container">
+                <!-- 面包屑导航 -->
+                <nav class="breadcrumb">
+                    <a href="../../index.html" class="breadcrumb-link">首页</a>
+                    <span class="breadcrumb-divider"><i class="fas fa-chevron-right"></i></span>
+                    <a href="../../pages/finance.html" class="breadcrumb-link">理财金融</a>
+                    <span class="breadcrumb-divider"><i class="fas fa-chevron-right"></i></span>
+                    <span class="breadcrumb-current">汇率换算</span>
+                </nav>
+                
+                <!-- 计算器容器 -->
+                <div class="calculator-container">
+                    <div class="calculator-card">
+                        <div class="calculator-header">
+                            <h1 class="calculator-title">汇率换算</h1>
+                            <p class="calculator-description">
+                                实时货币汇率换算（汇率数据为示例，实际使用时需要联网获取最新数据）
+                            </p>
+                        </div>
+                        
+                        <!-- 主要货币汇率显示 -->
+                        <div class="currency-ticker mb-6">
+                            <div class="ticker-title">
+                                <i class="fas fa-chart-line"></i> 主要货币汇率（示例）
+                            </div>
+                            <div class="ticker-grid">
+                                <div class="ticker-item">
+                                    <span class="ticker-pair">USD/CNY</span>
+                                    <span class="ticker-rate">7.20</span>
+                                </div>
+                                <div class="ticker-item">
+                                    <span class="ticker-pair">EUR/CNY</span>
+                                    <span class="ticker-rate">7.85</span>
+                                </div>
+                                <div class="ticker-item">
+                                    <span class="ticker-pair">JPY/CNY</span>
+                                    <span class="ticker-rate">0.048</span>
+                                </div>
+                                <div class="ticker-item">
+                                    <span class="ticker-pair">GBP/CNY</span>
+                                    <span class="ticker-rate">9.10</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 汇率计算器 -->
+                        <div class="input-group">
+                            <label class="input-label">金额</label>
+                            <input type="number" id="amount" class="input-field" placeholder="输入金额" value="100">
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label class="input-label">从货币</label>
+                                <select id="fromCurrency" class="input-field">
+                                    <option value="CNY">人民币 (CNY)</option>
+                                    <option value="USD">美元 (USD)</option>
+                                    <option value="EUR">欧元 (EUR)</option>
+                                    <option value="JPY">日元 (JPY)</option>
+                                    <option value="GBP">英镑 (GBP)</option>
+                                    <option value="HKD">港币 (HKD)</option>
+                                    <option value="AUD">澳元 (AUD)</option>
+                                    <option value="CAD">加元 (CAD)</option>
+                                    <option value="CHF">瑞士法郎 (CHF)</option>
+                                    <option value="SGD">新加坡元 (SGD)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <button id="swapCurrency" class="btn btn-outline" style="margin-top: 1.5rem;">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label">到货币</label>
+                                <select id="toCurrency" class="input-field">
+                                    <option value="USD">美元 (USD)</option>
+                                    <option value="CNY">人民币 (CNY)</option>
+                                    <option value="EUR">欧元 (EUR)</option>
+                                    <option value="JPY">日元 (JPY)</option>
+                                    <option value="GBP">英镑 (GBP)</option>
+                                    <option value="HKD">港币 (HKD)</option>
+                                    <option value="AUD">澳元 (AUD)</option>
+                                    <option value="CAD">加元 (CAD)</option>
+                                    <option value="CHF">瑞士法郎 (CHF)</option>
+                                    <option value="SGD">新加坡元 (SGD)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label">汇率 (1 从货币 = ? 到货币)</label>
+                            <input type="number" id="exchangeRate" class="input-field" placeholder="输入汇率" value="0.1389" step="0.0001">
+                            <small class="input-hint">留空将使用内置汇率表</small>
+                        </div>
+                        
+                        <!-- 计算按钮 -->
+                        <button class="btn btn-primary btn-block calc-btn" id="calculateBtn">
+                            <i class="fas fa-exchange-alt"></i> 换算货币
+                        </button>
+                        
+                        <!-- 结果展示 -->
+                        <div class="result-display" id="resultSection">
+                            <h3 class="result-title"><i class="fas fa-money-bill-wave"></i> 换算结果</h3>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <span class="result-label">原始金额</span>
+                                    <span class="result-value" id="originalAmount">100.00 CNY</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">换算金额</span>
+                                    <span class="result-value" id="convertedAmount">13.89 USD</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">汇率</span>
+                                    <span class="result-value" id="actualRate">1 CNY = 0.1389 USD</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">反向汇率</span>
+                                    <span class="result-value" id="reverseRate">1 USD = 7.20 CNY</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 汇率表 -->
+                        <div class="mt-6">
+                            <h3 class="section-title" style="font-size: 1.25rem; margin-bottom: 1rem;">
+                                <i class="fas fa-table"></i> 主要货币汇率表 (示例)
+                            </h3>
+                            <div style="overflow-x: auto;">
+                                <table class="exchange-table">
+                                    <thead>
+                                        <tr>
+                                            <th>货币</th>
+                                            <th>符号</th>
+                                            <th>兑人民币</th>
+                                            <th>兑美元</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="exchangeTable">
+                                        <!-- 汇率表将通过JS动态生成 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 使用说明 -->
+                    <div class="alert alert-info mt-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-lightbulb mr-3"></i>
+                            <div>
+                                <strong>使用说明：</strong> 
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                    <li>此工具为离线版本，汇率数据为示例数据</li>
+                                    <li>如需最新汇率，请手动输入当前汇率</li>
+                                    <li>支持双向换算，可点击交换按钮快速切换货币</li>
+                                    <li>计算结果仅供参考，实际交易以银行汇率为准</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <a href="../../index.html" class="footer-logo">
+                        <i class="fas fa-calculator"></i>
+                        <span>生活计算宝典</span>
+                    </a>
+                    <p class="footer-description">
+                        一站式离线计算工具集合，为您的生活带来便利。
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">理财工具</h4>
+                    <a href="interest.html" class="footer-link">利息计算器</a>
+                    <a href="loan-compare.html" class="footer-link">贷款对比</a>
+                    <a href="investment.html" class="footer-link">投资收益计算</a>
+                    <a href="currency.html" class="footer-link">汇率换算</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">快速链接</h4>
+                    <a href="../../pages/finance.html" class="footer-link">返回理财金融</a>
+                    <a href="../../pages/tools.html" class="footer-link">所有工具</a>
+                    <a href="https://github.com/laddzhao/life-calculators" target="_blank" class="footer-link">GitHub项目</a>
+                    <a href="../../404.html" class="footer-link">404页面</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">其他工具</h4>
+                    <a href="../home/utility-bill.html" class="footer-link">水电费计算</a>
+                    <a href="../shopping/discount.html" class="footer-link">折扣计算器</a>
+                    <a href="../health/bmi.html" class="footer-link">BMI计算</a>
+                    <a href="../professional/mortgage.html" class="footer-link">房贷计算器</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 生活计算宝典 · 汇率换算</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 移动端底部导航 -->
+    <nav class="mobile-bottom-nav">
+        <a href="../../index.html" class="nav-item">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-label">首页</span>
+        </a>
+        <a href="../../pages/shopping.html" class="nav-item">
+            <i class="fas fa-shopping-cart nav-icon"></i>
+            <span class="nav-label">购物</span>
+        </a>
+        <a href="../../pages/finance.html" class="nav-item active">
+            <i class="fas fa-chart-line nav-icon"></i>
+            <span class="nav-label">理财</span>
+        </a>
+        <a href="../../pages/tools.html" class="nav-item">
+            <i class="fas fa-th nav-icon"></i>
+            <span class="nav-label">全部</span>
+        </a>
+        <a href="#" class="nav-item" id="mobileMenuBtn">
+            <i class="fas fa-ellipsis-h nav-icon"></i>
+            <span class="nav-label">更多</span>
+        </a>
+    </nav>
+
+    <script>
+        // 示例汇率数据（基于人民币）
+        const exchangeRates = {
+            CNY: { name: "人民币", symbol: "¥", rate: 1 },
+            USD: { name: "美元", symbol: "$", rate: 0.1389 },  // 1 CNY = 0.1389 USD
+            EUR: { name: "欧元", symbol: "€", rate: 0.1274 },  // 1 CNY = 0.1274 EUR
+            JPY: { name: "日元", symbol: "¥", rate: 20.83 },   // 1 CNY = 20.83 JPY
+            GBP: { name: "英镑", symbol: "£", rate: 0.1099 },  // 1 CNY = 0.1099 GBP
+            HKD: { name: "港币", symbol: "$", rate: 1.085 },   // 1 CNY = 1.085 HKD
+            AUD: { name: "澳元", symbol: "$", rate: 0.213 },   // 1 CNY = 0.213 AUD
+            CAD: { name: "加元", symbol: "$", rate: 0.189 },   // 1 CNY = 0.189 CAD
+            CHF: { name: "瑞士法郎", symbol: "CHF", rate: 0.124 }, // 1 CNY = 0.124 CHF
+            SGD: { name: "新加坡元", symbol: "$", rate: 0.186 } // 1 CNY = 0.186 SGD
+        };
+
+        // 初始化汇率表
+        function initExchangeTable() {
+            const tableBody = document.getElementById('exchangeTable');
+            tableBody.innerHTML = '';
+            
+            // 以人民币为基准
+            const baseCurrency = 'CNY';
+            const baseRate = exchangeRates[baseCurrency].rate;
+            
+            // 以美元为基准
+            const usdRate = exchangeRates['USD'].rate;
+            
+            Object.keys(exchangeRates).forEach(code => {
+                const currency = exchangeRates[code];
+                // 计算兑人民币汇率
+                const rateToCNY = (1 / currency.rate).toFixed(4);
+                // 计算兑美元汇率
+                const rateToUSD = (currency.rate / usdRate).toFixed(4);
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${currency.name}</td>
+                    <td>${currency.symbol}</td>
+                    <td>1 ${code} = ${rateToCNY} CNY</td>
+                    <td>1 ${code} = ${rateToUSD} USD</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // 计算汇率
+        function calculateExchange() {
+            const amount = parseFloat(document.getElementById('amount').value) || 0;
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+            const customRate = parseFloat(document.getElementById('exchangeRate').value);
+            
+            let rate;
+            
+            // 如果用户输入了自定义汇率，使用自定义汇率
+            if (customRate && !isNaN(customRate)) {
+                rate = customRate;
+            } else {
+                // 使用内置汇率数据
+                // 首先将金额转换为人民币，然后再转换为目标货币
+                const amountInCNY = amount / exchangeRates[fromCurrency].rate;
+                rate = exchangeRates[toCurrency].rate / exchangeRates[fromCurrency].rate;
+            }
+            
+            const convertedAmount = amount * rate;
+            const reverseRate = 1 / rate;
+            
+            // 更新显示
+            document.getElementById('originalAmount').textContent = 
+                `${amount.toFixed(2)} ${fromCurrency}`;
+            document.getElementById('convertedAmount').textContent = 
+                `${convertedAmount.toFixed(2)} ${toCurrency}`;
+            document.getElementById('actualRate').textContent = 
+                `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
+            document.getElementById('reverseRate').textContent = 
+                `1 ${toCurrency} = ${reverseRate.toFixed(4)} ${fromCurrency}`;
+            
+            // 更新汇率输入框显示当前汇率
+            document.getElementById('exchangeRate').value = rate.toFixed(4);
+        }
+
+        // 交换货币
+        function swapCurrencies() {
+            const fromCurrency = document.getElementById('fromCurrency');
+            const toCurrency = document.getElementById('toCurrency');
+            
+            const tempValue = fromCurrency.value;
+            fromCurrency.value = toCurrency.value;
+            toCurrency.value = tempValue;
+            
+            calculateExchange();
+        }
+
+        // 主题切换
+        function initTheme() {
+            const themeBtn = document.querySelector('.theme-btn');
+            
+            // 检查本地存储的主题设置
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            
+            // 切换主题函数
+            function toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // 更新图标
+                if (themeBtn) {
+                    const icon = themeBtn.querySelector('i');
+                    icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+            
+            // 添加事件监听
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            initExchangeTable();
+            
+            // 添加事件监听
+            document.getElementById('calculateBtn').addEventListener('click', calculateExchange);
+            document.getElementById('swapCurrency').addEventListener('click', swapCurrencies);
+            document.getElementById('amount').addEventListener('input', calculateExchange);
+            document.getElementById('fromCurrency').addEventListener('change', calculateExchange);
+            document.getElementById('toCurrency').addEventListener('change', calculateExchange);
+            document.getElementById('exchangeRate').addEventListener('input', calculateExchange);
+            
+            // 初始计算
+            calculateExchange();
+        });
+    </script>
+    
+    <style>
+        .currency-ticker {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            border: 1px solid var(--border-light);
+        }
+        
+        .ticker-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ticker-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        @media (min-width: 768px) {
+            .ticker-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .ticker-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            background: var(--bg-primary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+        }
+        
+        .ticker-pair {
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+        
+        .ticker-rate {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        
+        .input-hint {
+            display: block;
+            margin-top: 0.25rem;
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
+        }
+        
+        .exchange-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        
+        .exchange-table th,
+        .exchange-table td {
+            padding: 0.5rem;
+            text-align: right;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .exchange-table th {
+            font-weight: 600;
+            color: var(--text-primary);
+            background-color: var(--gray-50);
+        }
+        
+        .exchange-table th:first-child,
+        .exchange-table td:first-child {
+            text-align: left;
+        }
+        
+        .exchange-table tr:hover {
+            background-color: var(--gray-50);
+        }
+        
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: end;
+        }
+        
+        @media (max-width: 640px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .exchange-table {
+                font-size: 0.75rem;
+            }
+            
+            .exchange-table th,
+            .exchange-table td {
+                padding: 0.25rem;
+            }
+        }
+    </style>
+</body>
+</html>
